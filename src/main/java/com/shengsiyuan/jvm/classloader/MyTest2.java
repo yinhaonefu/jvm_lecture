@@ -7,6 +7,7 @@ package com.shengsiyuan.jvm.classloader;
  * 本例中的常量str存放到了MyTest2的常量池中，MyTest2和MyParent2就没有关系了
  * 甚至我们可以将MyParent2.class删除
  *
+ * javap -c com.shengsiyuan.jvm.classloader.MyTest2 查看编译后的字节码文件
  * 助记符：
  * ldc表示将int float或是String类型的常量值从常量池中推送至栈顶
  * bipush将单字节（-128 - 127）的常量值推送至栈顶
@@ -31,7 +32,7 @@ class MyParent2{
     //添加final MyParent2不会被初始化 静态代码块不执行
     public static final String str = "hello world";
 
-    public static final short s = 127;//bipush
+    public static final short s = 32767;//bipush
 
     public static final int i = 128;//sipush
 

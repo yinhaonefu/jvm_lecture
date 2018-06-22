@@ -6,10 +6,12 @@ package com.shengsiyuan.jvm.classloader;
  * 对于静态变量来说，只有直接定义了该静态变量的类才会被初始化
  * 当一个类在初始化时，要求其父类全部都已经初始化完毕
  * -XX:+TraceClassLoading 运行时添加该参数追踪类的加载
- * -XX:+<option>开启option选项
+ * -XX:+<option>开启option选项 <option>相当于TraceClassLoading
  * -XX:-<option>关闭option选项
  * -XX:<option>=<value> 表示将option选项的值设为value
  *
+ * 如果对父类的静态变量直接使用，会导致父类的初始化，子类不会初始化，但是子类也会被加载。
+ * 可以通过参数-XX:+TraceClassLoading查看类加载日志。
  */
 public class MyTest1 {
 
