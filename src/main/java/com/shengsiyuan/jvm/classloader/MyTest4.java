@@ -5,7 +5,13 @@ package com.shengsiyuan.jvm.classloader;
  *
  * 对于数组实例来说，其类型是由JVM在运行期动态生成的，表示为
     [Lcom.shengsiyuan.jvm.classloader.MyParent4
-    二维数组就是[Lcom.shengsiyuan.jvm.classloader.MyParent4 父类型都是Object
+    二维数组就是[[Lcom.shengsiyuan.jvm.classloader.MyParent4 父类型都是Object
+
+ 所以创建了一个数组类型，并不会导致数组中的元素类型的初次使用，而是会创建一个数组类型，
+ 这个类型是JVM在运行期自己创建的
+
+ 对于数组来说，JavaDoc经常将构成数组的元素称为Component，实际上就是将数组降低一个维度后的类型
+ 二维数组的Component就是二维数组里面包含的一维数组，一维数组的Component就是一维数组里面包含的元素类型
 
 
  助记符：
