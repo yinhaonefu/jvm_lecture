@@ -15,6 +15,18 @@ package com.shengsiyuan.jvm.classloader;
  */
 public class MyTest1 {
 
+    static {
+        System.out.println();
+    }
+
+    static {
+
+    }
+
+    static {
+
+    }
+
     public static void main(String[] args) {
 
         System.out.println(MyChild1.str);

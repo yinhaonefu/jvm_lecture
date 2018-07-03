@@ -11,15 +11,27 @@ import java.util.Random;
  */
 public class MyTest5 {
     public static void main(String[] args) {
-        System.out.println(MyChild5.b);
+        System.out.println(MyChild5.thread);
     }
 }
 
 interface MyParent5{
     public static final int a = 5;
+
+    public static final Thread thread = new Thread(){
+        {
+            System.out.println("MyParent5 invoked");
+        }
+    };
 }
 
 interface MyChild5 extends MyParent5{
     //随机数运行时才会被确定，所以MyChild5会被初始化，其父接口MyParent5会被加载，但不会初始化
     public static final int b = new Random().nextInt(4);
+
+    public static final Thread thread = new Thread(){
+        {
+            System.out.println("MyChild5 invoked");
+        }
+    };
 }
