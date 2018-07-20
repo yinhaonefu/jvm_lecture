@@ -80,7 +80,34 @@ public class MyTest16 extends ClassLoader{
         return data;
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void testClassUnLoading()throws Exception{
+        MyTest16 loader1 = new MyTest16("loader1");
+//        loader1.setPath("/Users/yinhao/IdeaProjects/jvm_lecture/out/production/classes/");
+        loader1.setPath("/Users/yinhao/Desktop/");
+        Class<?> clazz = loader1.loadClass("com.shengsiyuan.jvm.classloader.MyTest1");
+        System.out.println("class " + clazz.hashCode());
+        Object obj = clazz.newInstance();
+        System.out.println(obj);
+        System.out.println(obj.getClass().getClassLoader());
+
+
+        loader1 = null;
+        clazz = null;
+        obj = null;
+
+        System.gc();
+
+        loader1 = new MyTest16("loader2");
+        clazz = loader1.loadClass("com.shengsiyuan.jvm.classloader.MyTest1");
+        obj = clazz.newInstance();
+
+        System.out.println(obj);
+        System.out.println(obj.getClass().getClassLoader());
+
+
+    }
+
+    public static void testClassLoading()throws Exception{
         MyTest16 loader1 = new MyTest16("loader1");
 //        loader1.setPath("/Users/yinhao/IdeaProjects/jvm_lecture/out/production/classes/");
         loader1.setPath("/Users/yinhao/Desktop/");
@@ -100,6 +127,22 @@ public class MyTest16 extends ClassLoader{
         Object obj2 = clazz2.newInstance();
         System.out.println(obj2);
         System.out.println(obj2.getClass().getClassLoader());
+
+        System.out.println("------");
+
+        MyTest16 loader3 = new MyTest16(loader2,"loader3");//loader2作为loader3的父加载器
+//        loader2.setPath("/Users/yinhao/IdeaProjects/jvm_lecture/out/production/classes/");
+        loader3.setPath("/Users/yinhao/Desktop/");
+        Class<?> clazz3 = loader3.loadClass("com.shengsiyuan.jvm.classloader.MyTest1");
+        System.out.println("class3 " + clazz3.hashCode());
+        Object obj3 = clazz3.newInstance();
+        System.out.println(obj3);
+        System.out.println(obj3.getClass().getClassLoader());
+    }
+
+    public static void main(String[] args) throws Exception {
+//        testClassLoading();
+        testClassUnLoading();
     }
 
 }
