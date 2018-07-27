@@ -1,6 +1,5 @@
 package com.shengsiyuan.jvm.classloader;
 
-import java.sql.Connection;
 
 /**
  * 当前类加载器(Current ClassLoader)
