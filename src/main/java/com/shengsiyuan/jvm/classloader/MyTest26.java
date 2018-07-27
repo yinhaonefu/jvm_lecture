@@ -22,7 +22,10 @@ import java.util.ServiceLoader;
  * 的ClassLoader找到并加载该类
  */
 public class MyTest26 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
+        //如果修改了当前线程上下文类加载器为扩展类加载器，则无法找到classpath下的驱动实现，iterator不会输出
+//        Thread.currentThread().setContextClassLoader(MyTest26.class.getClassLoader().getParent());
+
         ServiceLoader<Driver> loader = ServiceLoader.load(Driver.class);
         Iterator<Driver> iterator = loader.iterator();
         while (iterator.hasNext()){
