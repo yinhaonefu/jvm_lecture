@@ -2,8 +2,8 @@ package com.shengsiyuan.jvm.classloader;
 
 /**
  * Created by yinhao on 18/3/8.
- *
- * 对于静态变量来说，只有直接定义了该静态变量的类才会被初始化
+ * 主动使用时类会被初始化
+ * 对于静态变量来说，只有直接定义了该静态变量的类才会被初始化（对静态变量的使用，属于主动使用中的一种）
  * 当一个类在初始化时，要求其父类全部都已经初始化完毕
  * -XX:+TraceClassLoading 运行时添加该参数追踪类的加载
  * -XX:+<option>开启option选项 <option>相当于TraceClassLoading

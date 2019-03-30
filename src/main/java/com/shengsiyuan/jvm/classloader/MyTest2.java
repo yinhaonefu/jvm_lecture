@@ -2,7 +2,7 @@ package com.shengsiyuan.jvm.classloader;
 
 /**
  * Created by yinhao on 18/3/9.
- * final常量在编译阶段会存入到调用这个常量的方法所在类的常量池中
+ * 如果添加了final关键字，常量在编译阶段会存入到调用这个常量的方法所在类的常量池中
  * 本质上，调用常量的类并没有直接引用到定义该静态常量的类，因此不会触发定义常量的类的初始化
  * 本例中的常量str存放到了MyTest2的常量池中，MyTest2和MyParent2就没有关系了
  * 甚至我们可以将MyParent2.class删除

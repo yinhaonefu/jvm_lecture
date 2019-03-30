@@ -17,6 +17,10 @@ import java.io.*;
  * 每个类加载器都有自己的命名空间，命名空间由该类加载器及所有父加载器所加载的类组成
  * 在同一个命名空间中，不会出现类的完整名字（包括类的包名）相同的两个类
  * 在不同的命名空间中，有可能会出现类的完整名字（包括类的包名）相同的两个类
+ *
+ * 每个类加载器都有自己的命名空间，命名空间由该加载器及所有父加载器所加载的类组成
+ * 在同一个命名空间中，不会出现类的完整名字相同的两个类
+ * 在不同的命名空间中，有可能会出现类的完整名字相同的两个类
  */
 public class MyTest16 extends ClassLoader{
 
@@ -96,6 +100,8 @@ public class MyTest16 extends ClassLoader{
         obj = null;
 
         System.gc();
+
+        Thread.sleep(100000);//打开jvisualvm观察类卸载情况，已卸载总数1
 
         loader1 = new MyTest16("loader2");
         clazz = loader1.loadClass("com.shengsiyuan.jvm.classloader.MyTest1");

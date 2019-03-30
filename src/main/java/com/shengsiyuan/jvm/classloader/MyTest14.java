@@ -12,10 +12,12 @@ public class MyTest14 {
     public static void main(String[] args) throws IOException {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         String resourceName = "com/shengsiyuan/jvm/classloader/MyTest14.class";
+        //获取资源的全路径
         Enumeration<URL> urls = classLoader.getResources(resourceName);
         while (urls.hasMoreElements()){
             URL url = urls.nextElement();
             System.out.println(url);
+            //file:/Users/yinhao/IdeaProjects/jvm_lecture/out/production/classes/com/shengsiyuan/jvm/classloader/MyTest14.class
         }
 
         System.out.println("---------");
