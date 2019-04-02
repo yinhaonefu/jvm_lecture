@@ -40,7 +40,7 @@ public class MyTest23 {
         System.out.println("--------");
 
         //当修改这个属性对应的类加载器时，这个类加载器就会成为系统类加载器，而原来的系统类加载器AppClassLoader会加载它
-        //需要为这个类加载器添加一个public构造方法接受一个参数，类型是ClassLoader
+        //需要为这个类加载器添加一个public构造方法接受一个参数，类型是ClassLoader，参考getSystemClassLoader文档说明
         System.out.println(System.getProperty("java.system.class.loader"));
 
         System.out.println(ClassLoader.getSystemClassLoader());
