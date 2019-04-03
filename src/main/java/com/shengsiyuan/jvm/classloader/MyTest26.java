@@ -26,6 +26,9 @@ public class MyTest26 {
         //如果修改了当前线程上下文类加载器为扩展类加载器，则无法找到classpath下的驱动实现，iterator不会输出
 //        Thread.currentThread().setContextClassLoader(MyTest26.class.getClassLoader().getParent());
 
+        // ServiceLoader.load(Driver.class)中加载了服务提供者的类，而ServiceLoader是由启动类加载器加载的，但是启动类加载器
+        // 是没办法加载classpath中的服务提供者的类
+        // 所以需要在内部将加载服务提供者的类的类加载器改成当前线程上下文类加载器，默认也就是系统类加载器
         ServiceLoader<Driver> loader = ServiceLoader.load(Driver.class);
         Iterator<Driver> iterator = loader.iterator();
         while (iterator.hasNext()){
