@@ -5,7 +5,7 @@ package com.shengsiyuan.jvm.classloader;
  *
  * 分析
  * Singleton.getInstance()执行时，调用一个类的静态方法，触发类的初始化
- * 初始化前，会首先进行准备，对类中的所有变量进行赋值操作，这时赋的是默认值
+ * 初始化前，会首先进行准备，对类中的所有静态变量进行赋值操作，这时赋的是默认值
  * counter1 = 0
  * singleton = null
  * counter2 = 0
