@@ -18,6 +18,9 @@ import sun.misc.Launcher;
  * 顺利进行下去，加载第一个纯Java类加载器就是启动类的职责。
  * 启动类加载器还有另一个职责是加载供JRE运行的基本组件，包括java.util与java.lang包中的类等等
  *
+ * 阅读sun.misc.Launcher源码，oracle jdk中Launcher类本身并不开源，可以在http://grepcode.com查看open jdk的源码
+ * oracle jdk和open jdk绝大部分的源码是一致的
+ *
  */
 public class MyTest23 {
     public static void main(String[] args) {
