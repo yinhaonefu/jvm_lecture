@@ -11,7 +11,7 @@ import java.io.*;
  * 将一个class文件复制到磁盘另一个位置，并按包名建立好目录
  * 并设置自定义类加载器的path到这个位置，再将classpath下该class文件删除（为了不让AppClassLoader加载到这个class文件）
  *
- * 因为父类加载器无法再classpath下加载到这个类，所以会由自定义类加载器加载
+ * 因为父类加载器无法在classpath下加载到这个类，所以会由自定义类加载器加载
  * 根据输出会发现加载的clazz对象的hashcode不同，代表加载了两个clazz对象。又引出了类加载器命名空间问题
  *
  * 每个类加载器都有自己的命名空间，命名空间由该类加载器及所有父加载器所加载的类组成
@@ -87,10 +87,10 @@ public class MyTest4 extends ClassLoader{
 
     public static void testClassLoading()throws Exception{
         MyTest4 loader1 = new MyTest4("loader1");
-        Class<?> clazz = loader1.loadClass("com.test.jvm.classloader.MyTest1");
-        System.out.println("class " + clazz.hashCode());
-        Object obj = clazz.newInstance();
-        System.out.println(obj);
+        Class<?> clazz1 = loader1.loadClass("com.test.jvm.classloader.MyTest1");
+        System.out.println("class " + clazz1.hashCode());
+        Object obj1 = clazz1.newInstance();
+        System.out.println(obj1);
     }
 
     public static void main(String[] args) throws Exception {
