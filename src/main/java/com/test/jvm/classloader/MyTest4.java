@@ -1,6 +1,9 @@
 package com.test.jvm.classloader;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 /**
  * 自定义类加载器
@@ -93,8 +96,27 @@ public class MyTest4 extends ClassLoader{
         System.out.println(obj1);
     }
 
+    public static void testClassUnLoading()throws Exception{
+        MyTest4 loader1 = new MyTest4("loader1");
+        loader1.setPath("/Users/yinhao/Desktop/");
+        Class<?> clazz = loader1.loadClass("com.test.jvm.classloader.MyTest1");
+        System.out.println("class " + clazz.hashCode());
+        Object obj = clazz.newInstance();
+        System.out.println(obj);
+        System.out.println(obj.getClass().getClassLoader());
+
+        loader1 = null;
+        clazz = null;
+        obj = null;
+
+        System.gc();
+
+        Thread.sleep(100000);//打开jvisualvm观察类卸载情况，已卸载总数1
+
+    }
+
     public static void main(String[] args) throws Exception {
-        testClassLoading();
+        testClassUnLoading();
     }
 
 }
