@@ -35,12 +35,16 @@ import java.util.List;
  * 2. 使用直接指针的方式
  *
  * -Xms5m -Xmx5m -XX:+HeapDumpOnOutOfMemoryError
+ * 添加-XX:+HeapDumpOnOutOfMemoryError为了能够在内存溢出时输入dump文件，使用jvisualvm装入该文件进行分析
+ *
  */
 public class MyTest1 {
     public static void main(String[] args) {
         List<MyTest1> list = new ArrayList<>();
         for ( ; ; ){
-            list.add(new MyTest1());
+            list.add(new MyTest1());//执行后内存溢出，生成dump文件
+
+            System.gc();//使用jvisualvm监控
         }
     }
 }
