@@ -11,5 +11,8 @@ repositories {
 }
 
 dependencies {
-    compile ("mysql:mysql-connector-java:5.1.34")
+    compile (
+            "mysql:mysql-connector-java:5.1.34",
+            "cglib:cglib:3.2.8"
+    )
 }
