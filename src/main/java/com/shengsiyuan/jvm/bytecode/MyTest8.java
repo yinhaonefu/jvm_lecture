@@ -13,6 +13,18 @@ package com.shengsiyuan.jvm.bytecode;
  * 4. 基于栈的指令集的缺点在于完成相同的操作，指令数量通常比基于寄存器的指令集数量更多，基于栈的指令集是在内存中完成操作的，
  *    而基于寄存器的指令集是直接由CPU来执行的，它是在高速缓冲区中进行执行的，速度要快很多，虽然虚拟机可以采用一些优化手段
  *    但总体来说，基于栈的指令集的执行速度要慢一些
+ *
+ * 结合oracle网站说明，分析myCaculate方法字节码指令
  */
 public class MyTest8 {
+
+    public int myCaculate(){
+        int a = 1;
+        int b = 2;
+        int c = 3;
+        int d = 4;
+
+        int result = (a + b - c) * d;
+        return result;
+    }
 }
