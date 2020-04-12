@@ -38,6 +38,11 @@ public class MyTest1 {
       5980K->4728K(19456K) 堆中占据大小5980K GC后占据大小4728K 总大小19456K
 
       ParOldGen       total 10240K, used 4104K 老年代总大小10240K 使用4104K(4728K-624K 堆占用总大小-新生代占用总大小)
+
+      当前版本默认垃圾收集器
+      PSYoungGen: Parallel Scavenge 新生代垃圾收集器
+      ParOldGen: Parallel Old 老年代垃圾收集器
+
      */
     public static void main(String[] args) {
         int size = 1024 * 1024;
