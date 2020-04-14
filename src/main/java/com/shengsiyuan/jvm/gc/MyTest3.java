@@ -5,14 +5,14 @@ package com.shengsiyuan.jvm.gc;
     -Xms20M
     -Xmx20M
     -Xmn10M
-    -XX:+PrintDCDetails
+    -XX:+PrintGCDetails
     -XX:+PrintCommandLineFlags 打印JVM启动参数
     -XX:SurvivorRatio=8
-    -XX:+MaxTenuringThresdhold=5
+    -XX:MaxTenuringThreshold=5
     -XX:+PrintTenuringDistribution
 
 
-    -XX:+MaxTenuringThresdhold=5 是指对象在GC后晋升到老年代的阈值，有可能GC次数不到这个阈值就会晋升到老年代
+    -XX:MaxTenuringThreshold=5 是指对象在GC后晋升到老年代的阈值，有可能GC次数不到这个阈值就会晋升到老年代
     该参数的默认值是15，CMS中默认是6，G1中默认是15（在JVM中，该数值是由4个bit来表示的，所以最大值1111，即15）
 
     经历了多次GC后，存活的对象会在From Survivor与To Survivor之间来回存放，而这里面的一个前提则是两个空间有足够的大小来存放这些数据
