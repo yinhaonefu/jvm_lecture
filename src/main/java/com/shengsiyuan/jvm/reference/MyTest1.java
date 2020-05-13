@@ -1,5 +1,8 @@
 package com.shengsiyuan.jvm.reference;
 
+import java.lang.ref.SoftReference;
+import java.util.Date;
+
 /**
  * Reference实例的4中状态 Active Pending Enqueued Inactive
  * Active：新创建的引用实例都会处于Active状态
@@ -9,4 +12,24 @@ package com.shengsiyuan.jvm.reference;
  */
 public class MyTest1 {
 
+    public static void main(String[] args) {
+        Date date = new Date();
+        SoftReference<Date> reference = new SoftReference<>(date);
+        Date date1 = reference.get();
+
+        //软引用指向的对象有可能被回收，需要非空判断
+        if(null != date1){
+            System.out.println("hello");
+        }else{
+            System.out.println("world");
+        }
+
+        System.out.println("======");
+
+        reference.clear();//清理后再获取对象就为空
+
+        Date date2 = reference.get();
+
+        System.out.println(date2);
+    }
 }
