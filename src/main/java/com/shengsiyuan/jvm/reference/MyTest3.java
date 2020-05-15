@@ -13,5 +13,9 @@ public class MyTest3 {
         Date date = new Date();
         WeakReference<Date> weakReference = new WeakReference<>(date);
         System.out.println(weakReference.get());
+        //gc前需要将强引用取消，此时date是弱引用，才会被回收
+        date = null;
+        System.gc();
+        System.out.println(weakReference.get());
     }
 }

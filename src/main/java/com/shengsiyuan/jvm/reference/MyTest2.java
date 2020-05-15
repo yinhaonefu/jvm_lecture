@@ -16,5 +16,9 @@ public class MyTest2 {
         ReferenceQueue<Date> referenceQueue = new ReferenceQueue<>();
         SoftReference<Date> softReference = new SoftReference<>(date, referenceQueue);
         System.out.println(softReference.get());
+        //即使取消强引用，软引用也会存活的长一些，不会被立刻回收
+        date = null;
+        System.gc();
+        System.out.println(softReference.get());
     }
 }
